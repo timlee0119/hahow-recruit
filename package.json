@@ -1,0 +1,21 @@
+{
+  "name": "hahow-recruit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
+    "test": "",
+    "stop": "lsof -ti :3000 | xargs kill"
+  },
+  "repository": "git@github.com:timlee0119/hahow-recruit.git",
+  "author": "Tim Lee <t0966510608@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
