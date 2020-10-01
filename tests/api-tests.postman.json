@@ -315,6 +315,7 @@
 							"    tests['Response contains \"id\" property'] = responseJSON.hasOwnProperty('id');",
 							"    tests['Response contains \"name\" property'] = responseJSON.hasOwnProperty('name');",
 							"    tests['Response contains \"image\" property'] = responseJSON.hasOwnProperty('image');",
+							"    tests['Response contains \"profile\" property'] = responseJSON.hasOwnProperty('profile');",
 							"    tests['profile containes \"str\" property'] = responseJSON.profile.hasOwnProperty('str');",
 							"    tests['profile containes \"int\" property'] = responseJSON.profile.hasOwnProperty('int');",
 							"    tests['profile containes \"agi\" property'] = responseJSON.profile.hasOwnProperty('agi');",
