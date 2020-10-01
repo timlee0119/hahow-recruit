@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "5604aba6-df72-4058-b2f7-4c9d5fe0ece5",
+		"name": "hahow-local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List heros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87eee6f4-4ead-462d-91ff-735f4366d45f",
+						"exec": [
+							"var is200Response = responseCode.code === 200;",
+							"",
+							"tests['Response code is 200 OK'] = is200Response;",
+							"",
+							"if(is200Response){",
+							"    var responseJSON = JSON.parse(responseBody);",
+							"",
+							"    tests['Response contains \"heroes\" property'] = responseJSON.hasOwnProperty('heroes');",
+							"    var hero = responseJSON.heroes[0];",
+							"    tests['Hero has \"id\" property'] = hero.hasOwnProperty('id');",
+							"    tests['Hero has \"name\" property'] = hero.hasOwnProperty('name');",
+							"    tests['Hero has \"image\" property'] = hero.hasOwnProperty('image');",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Hero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c003e44b-478e-416e-876a-bc1384379548",
+						"exec": [
+							"var is200Response = responseCode.code === 200;",
+							"",
+							"tests['Response code is 200 OK'] = is200Response;",
+							"",
+							"if(is200Response){",
+							"    var responseJSON = JSON.parse(responseBody);",
+							"",
+							"    tests['Response contains \"id\" property'] = responseJSON.hasOwnProperty('id');",
+							"    tests['Response contains \"name\" property'] = responseJSON.hasOwnProperty('name');",
+							"    tests['Response contains \"image\" property'] = responseJSON.hasOwnProperty('image');",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes/:heroid",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes",
+						":heroid"
+					],
+					"variable": [
+						{
+							"key": "heroid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Hero Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f506f57-f9b2-4ad9-96ac-91b0198fe816",
+						"exec": [
+							"var is404Response = responseCode.code === 404;",
+							"",
+							"tests['Response code is 404'] = is404Response;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes/:heroid",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes",
+						":heroid"
+					],
+					"variable": [
+						{
+							"key": "heroid",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Heroes Authenticated",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35a3c01d-03b7-411e-9351-00d8a6bfb0e3",
+						"exec": [
+							"var is200Response = responseCode.code === 200;",
+							"",
+							"tests['Response code is 200 OK'] = is200Response;",
+							"",
+							"if(is200Response){",
+							"    var responseJSON = JSON.parse(responseBody);",
+							"",
+							"    tests['Response contains \"heroes\" property'] = responseJSON.hasOwnProperty('heroes');",
+							"    var hero = responseJSON.heroes[0];",
+							"    tests['Hero has \"id\" property'] = hero.hasOwnProperty('id');",
+							"    tests['Hero has \"name\" property'] = hero.hasOwnProperty('name');",
+							"    tests['Hero has \"image\" property'] = hero.hasOwnProperty('image');",
+							"    tests['Hero has \"profile\" property'] = hero.hasOwnProperty('profile');",
+							"    tests['Profile has \"str\" property'] = hero.profile.hasOwnProperty('str');",
+							"    tests['Profile has \"int\" property'] = hero.profile.hasOwnProperty('int');",
+							"    tests['Profile has \"agi\" property'] = hero.profile.hasOwnProperty('agi');",
+							"    tests['Profile has \"luk\" property'] = hero.profile.hasOwnProperty('luk');",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Name",
+						"value": "hahow",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "rocks",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Heroes Authentication Failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9853388-87fd-4bec-afe0-df0dbb01e3b4",
+						"exec": [
+							"var is200Response = responseCode.code === 200;",
+							"",
+							"tests['Response code is 200 OK'] = is200Response;",
+							"",
+							"if(is200Response){",
+							"    var responseJSON = JSON.parse(responseBody);",
+							"",
+							"    tests['Response contains \"heroes\" property'] = responseJSON.hasOwnProperty('heroes');",
+							"    var hero = responseJSON.heroes[0];",
+							"    tests['Hero has \"id\" property'] = hero.hasOwnProperty('id');",
+							"    tests['Hero has \"name\" property'] = hero.hasOwnProperty('name');",
+							"    tests['Hero has \"image\" property'] = hero.hasOwnProperty('image');",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Name",
+						"type": "text",
+						"value": "hahow"
+					},
+					{
+						"key": "Password",
+						"type": "text",
+						"value": "rockss"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Hero Authenticated",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fdff6490-9653-4659-b6ee-a3f7e019dd15",
+						"exec": [
+							"var is200Response = responseCode.code === 200;",
+							"",
+							"tests['Response code is 200 OK'] = is200Response;",
+							"",
+							"if(is200Response){",
+							"    var responseJSON = JSON.parse(responseBody);",
+							"",
+							"    tests['Response contains \"id\" property'] = responseJSON.hasOwnProperty('id');",
+							"    tests['Response contains \"name\" property'] = responseJSON.hasOwnProperty('name');",
+							"    tests['Response contains \"image\" property'] = responseJSON.hasOwnProperty('image');",
+							"    tests['profile containes \"str\" property'] = responseJSON.profile.hasOwnProperty('str');",
+							"    tests['profile containes \"int\" property'] = responseJSON.profile.hasOwnProperty('int');",
+							"    tests['profile containes \"agi\" property'] = responseJSON.profile.hasOwnProperty('agi');",
+							"    tests['profile containes \"luk\" property'] = responseJSON.profile.hasOwnProperty('luk');",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Name",
+						"value": "hahow",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "rocks",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes/:heroid",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes",
+						":heroid"
+					],
+					"variable": [
+						{
+							"key": "heroid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Hero Authentication Failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "03992d61-38a2-41c6-ac35-7657e7a2f0f2",
+						"exec": [
+							"var is200Response = responseCode.code === 200;",
+							"",
+							"tests['Response code is 200 OK'] = is200Response;",
+							"",
+							"if(is200Response){",
+							"    var responseJSON = JSON.parse(responseBody);",
+							"",
+							"    tests['Response contains \"id\" property'] = responseJSON.hasOwnProperty('id');",
+							"    tests['Response contains \"name\" property'] = responseJSON.hasOwnProperty('name');",
+							"    tests['Response contains \"image\" property'] = responseJSON.hasOwnProperty('image');",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Name",
+						"type": "text",
+						"value": "hahow"
+					},
+					{
+						"key": "Password",
+						"type": "text",
+						"value": "rockss"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/heroes/:heroid",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"heroes",
+						":heroid"
+					],
+					"variable": [
+						{
+							"key": "heroid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

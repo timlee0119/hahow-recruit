@@ -1,0 +1,14 @@
+{
+	"id": "54530613-c24e-47cd-b2c4-e632b7fa3e02",
+	"name": "hahow-local",
+	"values": [
+		{
+			"key": "apiUrl",
+			"value": "http://localhost:3000",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-10-01T12:44:15.375Z",
+	"_postman_exported_using": "Postman/7.33.1"
+}
