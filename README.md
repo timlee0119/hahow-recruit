@@ -1,4 +1,4 @@
-# hahow-recruit
+# hahow-recruit [![Build Status](https://travis-ci.com/timlee0119/hahow-recruit.svg?branch=master)](https://travis-ci.com/timlee0119/hahow-recruit)
 ## How to Run
 1. Clone this project
 2. `yarn install`
