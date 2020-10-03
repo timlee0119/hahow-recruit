@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
-    "test": "yarn start &> /dev/null & sleep 3 && newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json && yarn stop &> /dev/null",
+    "test": "yarn start &> /dev/null & sleep 3 && newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json; yarn stop &> /dev/null",
+    "test:only": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json",
     "stop": "lsof -ti :3000 | xargs kill"
   },
   "repository": "git@github.com:timlee0119/hahow-recruit.git",
