@@ -20,7 +20,7 @@
 - newman: A command line collection runner for Postman.
 - nodemon: Monitors changes and automatically restarts server.
 ## When Would I Comment on my Code?
-- To give a function/file an overall explanation
+- To give a function/file an explanation about parameters, desired input/output and purpose
 - When a part code is not straighforwad enough for readers to understand the implementation logic
 ## Issues I found in this project
 - One of the provided API, `https://hahow-recruit.herokuapp.com/heroes/:heroId`, randomly responses with undesired body `{ code: 1000, ... }`, causing the HTTP request getting incorrect data. To handle this, I retry the specific request up to 7 times when getting the 1000 code. If the server cannot get correct response in 7 retries, respond to client with status code 503 (Service Unavailable).
